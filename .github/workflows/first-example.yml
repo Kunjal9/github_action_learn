@@ -11,7 +11,7 @@ jobs:
       - name: Welcome Message
         run: |
             echo "My first Github Action Job"
-            List files
+            ls files
             cat README.md
 
       # - name: List files
