@@ -2,7 +2,7 @@ name: Generate ASCII Network
 
 on: push
 jobs:
-  generate ascii:
+  generate-ascii:
     runs-on: ubuntu-latest
     steps:
         - name: Checkout Repo
