@@ -1,5 +1,5 @@
 #how to share data between jobs can use artifact
-name: Generate ASCII Network
+name: Multi job
 
 on: push
 jobs:
