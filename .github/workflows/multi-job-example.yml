@@ -25,10 +25,10 @@ jobs:
         - name: download file
           uses: actions/download-artifact@v4
           with:
-            name: dragon file
+            name: dragon-file
 
         - name: execute CMD
-          run: grep i "dragon" dragon.txt
+          run: grep -i "dragon" dragon.txt
         
         
   deploy-job:
@@ -38,7 +38,7 @@ jobs:
         - name: download file
           uses: actions/download-artifact@v4
           with:
-            name: dragon file
+            name: dragon-file
 
         - name: execute CMD to read file
           run: cat dragon.txt
