@@ -1,0 +1,50 @@
+#how to share data between jobs can use artifact
+name: Generate ASCII Network
+
+on: push
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+        - name: install
+          run: sudo apt-get install cowsay -y
+
+        - name: execute CMD
+          run: cowsay -f dragon "Run for cover, I am a DRAGON.....RAWR" >> dragon.txt
+        
+        - name: upload file
+          uses: actions/upload-artifact@v3
+          with:
+            name: dragon file
+            path  : dragon.txt
+            
+  test-job:
+    needs: build-job
+    runs-on: ubuntu-latest
+    steps:
+        - name: download file
+          uses: actions/download-artifact@v3
+          with:
+            name: dragon file
+
+        - name: execute CMD
+          run: grep i "dragon" dragon.txt
+        
+        
+  deploy-job:
+    needs: test-job
+    runs-on: ubuntu-latest
+    steps:
+        - name: download file
+          uses: actions/download-artifact@v3
+          with:
+            name: dragon file
+
+        - name: execute CMD to read file
+          run: cat dragon.txt
+        
+
+        
+
+
+          
